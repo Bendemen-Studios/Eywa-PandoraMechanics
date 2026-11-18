@@ -1,13 +1,13 @@
+# Values can be overridden in each MythicMobs skill mechanic line.
 predator-alarm:
-  enabled: true
-  radius: 24.0
-  cooldown-ticks: 100
+  default-radius: 24.0
+  default-cooldown-seconds: 5.0
+  default-sound: ENTITY_WOLF_GROWL
 prey-panic:
-  enabled: true
-  radius: 16.0
-  flee-ticks: 100
+  default-radius: 16.0
+  default-speed: 0.8
+  default-cooldown-seconds: 1.5
 territorial-warning:
-  enabled: true
-  radius: 12.0
-  cooldown-ticks: 120
-  warning-message: "&6%mob% waarschuwt je: verlaat het territorium!"
+  default-radius: 12.0
+  default-cooldown-seconds: 6.0
+  default-message: "&6%mob% waarschuwt je: verlaat het territorium!"
