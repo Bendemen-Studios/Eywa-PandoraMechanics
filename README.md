@@ -5,7 +5,7 @@ Custom MythicMobs mechanics for EywaMC Pandora.
 ## Target versions
 - Paper 26.3.0
 - MythicMobs 5.9.0
-- Java 21 toolchain (confirm the runtime requirement of your Paper build)
+- Java 25 toolchain (for the Paper 26.3 target)
 
 ## Mechanics
 
