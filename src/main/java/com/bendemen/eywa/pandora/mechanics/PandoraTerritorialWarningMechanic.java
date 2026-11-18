@@ -8,7 +8,7 @@ import io.lumine.mythic.core.skills.SkillExecutor;
 import io.lumine.mythic.core.skills.SkillMechanic;
 import io.lumine.mythic.core.utils.annotations.MythicMechanic;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import java.io.File;
@@ -33,11 +33,11 @@ public final class PandoraTerritorialWarningMechanic extends SkillMechanic imple
         if (guardian == null || !MechanicUtil.ready(guardian, "territorial-warning", cooldownMillis)) return SkillResult.SUCCESS;
         double squared = radius * radius;
         String mobName = guardian.getCustomName() == null ? guardian.getName() : guardian.getCustomName();
-        String warning = ChatColor.translateAlternateColorCodes('&', message.replace("%mob%", mobName));
+        var warning = LegacyComponentSerializer.legacyAmpersand().deserialize(message.replace("%mob%", mobName));
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (player.getWorld().equals(guardian.getWorld())
                     && player.getLocation().distanceSquared(guardian.getLocation()) <= squared) {
-                player.sendMessage(warning);
+                player.sendActionBar(warning);
             }
         }
         return SkillResult.SUCCESS;
