@@ -24,7 +24,7 @@ Finds the nearest living entity within range and moves the prey away from it.
 ```
 
 ### Territorial warning
-Sends a message to players inside the warning radius.
+Displays a compact action-bar warning to players inside the warning radius (no chat spam).
 ```yaml
 - PandoraTerritorialWarning{radius=12;cooldown=6;message="&6You are too close to %mob%'s territory! Leave now!"}
 ```
