@@ -1,0 +1,13 @@
+predator-alarm:
+  enabled: true
+  radius: 24.0
+  cooldown-ticks: 100
+prey-panic:
+  enabled: true
+  radius: 16.0
+  flee-ticks: 100
+territorial-warning:
+  enabled: true
+  radius: 12.0
+  cooldown-ticks: 120
+  warning-message: "&6%mob% waarschuwt je: verlaat het territorium!"

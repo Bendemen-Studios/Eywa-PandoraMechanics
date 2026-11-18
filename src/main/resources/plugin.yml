@@ -1,0 +1,7 @@
+name: EywaPandoraMechanics
+version: '${version}'
+main: com.bendemen.eywa.pandora.EywaPandoraMechanics
+api-version: '26.3'
+depend: [MythicMobs]
+author: Bendemen Studios
+description: Pandora ecosystem mechanics for MythicMobs.
