@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'io.papermc.paper:paper-api:26.3.0-R0.1-SNAPSHOT'
+    compileOnly 'io.papermc.paper:paper-api:26.3.build.+'
     compileOnly 'io.lumine:Mythic-Dist:5.9.0'
 }
 
