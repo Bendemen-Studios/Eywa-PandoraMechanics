@@ -24,7 +24,7 @@ public final class PandoraTerritorialWarningMechanic extends SkillMechanic imple
         super(manager, file, line, config);
         radius = Math.max(1.0, config.getDouble("radius", 12.0));
         cooldownMillis = Math.max(0L, (long) (config.getDouble("cooldown", 6.0) * 1000L));
-        message = config.getString("message", "&6%mob% waarschuwt je: verlaat het territorium!");
+        message = config.getString("message", "&6You are too close to %mob%'s territory! Leave now!");
     }
 
     @Override
