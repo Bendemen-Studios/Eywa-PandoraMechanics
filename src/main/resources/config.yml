@@ -10,4 +10,4 @@ prey-panic:
 territorial-warning:
   default-radius: 12.0
   default-cooldown-seconds: 6.0
-  default-message: "&6%mob% waarschuwt je: verlaat het territorium!"
+  default-message: "&6You are too close to %mob%'s territory! Leave now!"
