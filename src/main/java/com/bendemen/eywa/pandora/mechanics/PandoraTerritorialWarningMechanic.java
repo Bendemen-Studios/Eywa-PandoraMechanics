@@ -4,24 +4,17 @@ import io.lumine.mythic.api.config.MythicLineConfig;
 import io.lumine.mythic.api.skills.INoTargetSkill;
 import io.lumine.mythic.api.skills.SkillMetadata;
 import io.lumine.mythic.api.skills.SkillResult;
-import io.lumine.mythic.core.skills.SkillExecutor;
-import io.lumine.mythic.core.skills.SkillMechanic;
-import io.lumine.mythic.core.utils.annotations.MythicMechanic;
-import org.bukkit.Bukkit;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import java.io.File;
 
-@MythicMechanic(author = "Bendemen Studios", name = "PandoraTerritorialWarning",
-        description = "Warns nearby players about a territorial Pandora creature")
-public final class PandoraTerritorialWarningMechanic extends SkillMechanic implements INoTargetSkill {
+public final class PandoraTerritorialWarningMechanic implements INoTargetSkill {
     private final double radius;
     private final long cooldownMillis;
     private final String message;
 
-    public PandoraTerritorialWarningMechanic(SkillExecutor manager, File file, String line, MythicLineConfig config) {
-        super(manager, file, line, config);
+    public PandoraTerritorialWarningMechanic(MythicLineConfig config) {
         radius = Math.max(1.0, config.getDouble("radius", 12.0));
         cooldownMillis = Math.max(0L, (long) (config.getDouble("cooldown", 6.0) * 1000L));
         message = config.getString("message", "&6You are too close to %mob%'s territory! Leave now!");
