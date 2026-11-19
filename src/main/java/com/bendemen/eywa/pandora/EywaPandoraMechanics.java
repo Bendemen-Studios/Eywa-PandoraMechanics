@@ -1,9 +1,14 @@
 package com.bendemen.eywa.pandora;
 
-import io.lumine.mythic.core.skills.CustomComponentRegistry;
+import com.bendemen.eywa.pandora.mechanics.PandoraPredatorAlarmMechanic;
+import com.bendemen.eywa.pandora.mechanics.PandoraPreyPanicMechanic;
+import com.bendemen.eywa.pandora.mechanics.PandoraTerritorialWarningMechanic;
+import io.lumine.mythic.bukkit.events.MythicMechanicLoadEvent;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class EywaPandoraMechanics extends JavaPlugin {
+public final class EywaPandoraMechanics extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         saveDefaultConfig();
@@ -12,7 +17,22 @@ public final class EywaPandoraMechanics extends JavaPlugin {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
-        new CustomComponentRegistry(this, "com.bendemen.eywa.pandora.mechanics");
-        getLogger().info("Registered Pandora mechanics with MythicMobs.");
+        getServer().getPluginManager().registerEvents(this, this);
+        getLogger().info("Listening for MythicMobs mechanic registration events.");
+    }
+
+    @EventHandler
+    public void onMythicMechanicLoad(MythicMechanicLoadEvent event) {
+        switch (event.getMechanicName().toLowerCase(java.util.Locale.ROOT)) {
+            case "pandorapredatoralarm" ->
+                    event.register(new PandoraPredatorAlarmMechanic(event.getConfig()));
+            case "pandorapreypanic" ->
+                    event.register(new PandoraPreyPanicMechanic(event.getConfig()));
+            case "pandoraterritorialwarning" ->
+                    event.register(new PandoraTerritorialWarningMechanic(event.getConfig()));
+            default -> {
+                // Not one of this plugin's mechanics.
+            }
+        }
     }
 }
