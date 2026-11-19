@@ -4,23 +4,16 @@ import io.lumine.mythic.api.config.MythicLineConfig;
 import io.lumine.mythic.api.skills.INoTargetSkill;
 import io.lumine.mythic.api.skills.SkillMetadata;
 import io.lumine.mythic.api.skills.SkillResult;
-import io.lumine.mythic.core.skills.SkillExecutor;
-import io.lumine.mythic.core.skills.SkillMechanic;
-import io.lumine.mythic.core.utils.annotations.MythicMechanic;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.util.Vector;
-import java.io.File;
 import java.util.Comparator;
 
-@MythicMechanic(author = "Bendemen Studios", name = "PandoraPreyPanic",
-        description = "Makes Pandora prey flee from the nearest nearby living entity")
-public final class PandoraPreyPanicMechanic extends SkillMechanic implements INoTargetSkill {
+public final class PandoraPreyPanicMechanic implements INoTargetSkill {
     private final double radius;
     private final double speed;
     private final long cooldownMillis;
 
-    public PandoraPreyPanicMechanic(SkillExecutor manager, File file, String line, MythicLineConfig config) {
-        super(manager, file, line, config);
+    public PandoraPreyPanicMechanic(MythicLineConfig config) {
         radius = Math.max(1.0, config.getDouble("radius", 16.0));
         speed = Math.max(0.1, config.getDouble("speed", 0.8));
         cooldownMillis = Math.max(0L, (long) (config.getDouble("cooldown", 1.5) * 1000L));
